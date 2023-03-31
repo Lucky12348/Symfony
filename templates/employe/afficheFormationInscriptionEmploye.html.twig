@@ -1,0 +1,173 @@
+{% if(message)%}
+    {{message}}
+{% endif %}
+
+<center><h2>Mes inscriptions</h2></center>
+
+<nav class="skew-menu">
+  <ul>
+    <li><a href="{{path('app_affEmploye')}}">Liste formations</a></li>
+    <li><a href="{{path('app_deconnexion')}}">Déconnexion</a></li>
+  </ul>
+</nav><br><br><br><br>
+
+{% for inscription in ensFormation %}
+<table cellspacing="3" bgcolor="#000000">
+	<tr bgcolor="#ffffff">
+		<th>statut</th>
+		<th>nom</th>
+        <th>formation</th>
+	</tr>
+	<tr bgcolor="#ffffff">
+		<td>{{ inscription.statut}}</td>
+        <td>{{ inscription.lemploye.nom}}</td>
+        <td>{{ inscription.laFromation.leProduit.libelle}}</td>
+	</tr>
+</table>
+<br>
+
+{% endfor %}
+<a href ="{{path('app_affEmploye')}}">retour inscription</a><br/>
+
+<style>
+.skew-menu {
+  text-align: center;
+  margin-top: 9em;
+}
+.skew-menu ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transform: skew(-25deg);
+}
+.skew-menu ul li {
+  background: #fff;
+  float: left;
+  border-right: 4px solid #eee;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  color: #555;
+  font-weight: bolder;
+  transition: all 0.3s linear;
+}
+.skew-menu ul li:first-child {
+  border-radius: 7px 0 0 7px;
+}
+.skew-menu ul li:last-child {
+  border-right: none;
+  border-radius: 0 7px 7px 0;
+}
+.skew-menu ul li:hover {
+  background: #eee;
+  color: tomato;
+}
+.skew-menu ul li a {
+  display: block;
+  padding: 1em 2em;
+  color: inherit;
+  text-decoration: none;
+  transform: skew(25deg);
+}
+
+</style>
+
+
+<style>
+h2 {
+  font-family: "Dancing Script", cursive;
+  width: 100%;
+  line-height: 150px;
+  font-size: 70px;
+  text-align: center;
+  color: var(--link-color);
+}
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* general styling */
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+}
+</style>
